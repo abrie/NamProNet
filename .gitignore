@@ -15,5 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-
-phonegap/platforms/android/ant-build
+phonegap/platforms/android/ant-build/
