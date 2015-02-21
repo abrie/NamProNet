@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header" data-theme="c">
+                <h1>Namibia Professional Network</h1>
+            </div><!-- /header -->
+			 <div data-role="panel" data-display="push" id="mypanel" data-theme="b">
+        <ul data-role="listview">
+            <li>Your wishes</li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-coffee'></i>Need a Coffee</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-beer'></i>Have a Beer</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-music'></i>Play Music</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-fire'></i>Make a fire</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-bullhorn'></i>Shout it loud</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-heart'></i>Meet friends</a></li>
+            <li data-icon='false'><a href="#"><i class='lIcon fa fa-trophy'></i>Win a Trophy</a></li>
+        </ul>
+    </div>
+			<!---------- homw content beggin here --------->
+            <div role="main" class="ui-content">
+                <h3>Sign Up</h3>
+				 <label for="txt-email">First name</label>
+                <input type="text" name="txt-fname" id="txt-fname" value="">
+				 <label for="txt-email">Last name</label>
+                <input type="text" name="txt-lname" id="txt-lname" value="">
+                <label for="txt-email">Email Address</label>
+				<input type="text" name="txt-email" id="txt-email" value="">
+                <label for="txt-password">Username</label>
+                <input type="text" name="txt-username" id="txt-username" value="">
+                <label for="txt-password">Password</label>
+                <input type="password" name="txt-password" id="txt-password" value="">
+                <label for="txt-password-confirm">Confirm Password</label>
+                <input type="password" name="txt-password-confirm" id="txt-password-confirm" value="">
+                <a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+                <div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="header">
+                        <h1>Almost done...</h1>
+                    </div>
+                    <div role="main" class="ui-content">
+                        <h3>Confirm Your Email Address</h3>
+                        <p>We sent you an email with instructions on how to confirm your email address. Please check your inbox and follow the instructions in the email.</p>
+                        <div class="mc-text-center"><a href="sign-in.html" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a></div>
+
+                    </div>
+                </div>
+            </div><!-- /content -->
+			 <!--------- home page content ends here --------->
+        </div>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
