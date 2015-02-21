@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
+gem 'devise_token_auth'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
