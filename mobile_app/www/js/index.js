@@ -84,6 +84,31 @@ function populateProfile(email, profile) {
     });
 }
 
+function updateProfile() {
+    var data = {
+        town : $("#select-town option:selected").text(),
+        region : $("#select-region option:selected").text(),
+        dob : $("#profile-dob").val(),
+        specialty : $("#select-specialty").val(),
+        skills : $("#profile-skills").val(),
+        email : $("#profile-email").val() 
+    };
+
+    console.log(data);
+
+    var jqxhr = $.put(
+        servicePath("profile"),
+        data,
+        function(result) {
+            console.log("profile updated.");
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown, jqXHR);
+            alert( "network error while updating profile" );
+        });
+
+}
+
 function requestProfile(email, callback) {
     var jqxhr = $.get(
         servicePath("profile"),
