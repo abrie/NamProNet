@@ -50,6 +50,10 @@ function mockAuthorization() {
     window.localStorage["password"] = "123456789";
 }
 
+function doLogout() {
+    console.log("logout requested...");
+}
+
 function doLogin() {
     var email = $("#txt-email").val();
     var password = $("#txt-password").val();
