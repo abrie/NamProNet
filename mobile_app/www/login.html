@@ -18,12 +18,10 @@
             </div><!-- /header -->
             <div role="main" class="ui-content">
                 <h3>Sign In</h3>
-                <form id="login" action="http://192.168.178.244:3000/users/sign_in" method="post">
-                    <label for="txt-email">Email Address</label>
-                    <input type="text" name="email" id="txt-email" value="">
-                    <label for="txt-password">Password</label>
-                    <input type="password" name="password" id="txt-password" value="">
-                </form>
+                <label for="login-email">Email Address</label>
+                <input type="text" name="login-email" id="login-email" value="">
+                <label for="login-password">Password</label>
+                <input type="password" name="login-password" id="login-password" value="">
                 <a href="#" id="login-submit-btn" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
                 <div data-role="popup" id="dlg-invalid-credentials" data-dismissible="false" style="max-width:400px;">
                     <div role="main" class="ui-content">

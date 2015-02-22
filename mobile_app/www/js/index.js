@@ -69,8 +69,8 @@ function doRegistration() {
 }
 
 function doLogin() {
-    var email = $("#txt-email").val();
-    var password = $("#txt-password").val();
+    var email = $("#login-email").val();
+    var password = $("#login-password").val();
     var credentials = {user:{email:email, password:password}};
 
     var jqxhr = $.post(
