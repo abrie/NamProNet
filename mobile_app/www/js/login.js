@@ -1,4 +1,5 @@
 $("#page-login").on('pagecreate', function(){
+    console.log("login page created.");
     $("#btn-submit").click( doLogin );
 
     function doLogin() {

@@ -1,5 +1,5 @@
-$(document).on('pageinit', function(){
-    console.log("running profile get");
+$("#page-profile").on('pagecreate', function(){
+    console.log("profile page created");
 
     requestProfile( window.localStorage["email"], populate );
 
