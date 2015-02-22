@@ -18,5 +18,6 @@ web_service/tmp
 
 mobile_app/platforms/android/ant-build
 mobile_app/platforms/android/CordovaLib/ant-build/
+mobile_app/platforms/android/assets/
 
 *.swp
