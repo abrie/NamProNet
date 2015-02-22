@@ -12,9 +12,22 @@
     <body>
         <div data-role="page" id="page-profile">
             <script type="text/javascript" src="js/profile.js"></script>
+
+            <div data-role="panel" data-display="push" id="mypanel" data-theme="c">
+                <ul data-role="listview">
+                    <li data-icon='false'><a href="home.html"><i class='lIcon fa fa-home'>Home</i></a></li>
+                    <li data-icon='false'><a href="profile.html"><i class='lIcon fa fa-info'>Profile</i></a></li>
+                    <li data-icon='false'><a href="#"><i class='lIcon fa fa-briefcase'>Profession</i></a></li>
+                    <li data-icon='false'><a href="#"><i class='lIcon fa fa-share'>Connection</i></a></li>
+                    <li data-icon='false'><a href="#"><i class='lIcon fa fa-briefcase'>Jobs</i></a></li>
+                </ul>
+            </div>
+
             <div data-role="header" data-theme="c">
                 <h1>Namibia Professional Network</h1>
+                <a href="#mypanel" data-ajax="false"><i class='fa fa-bars'></i></a>
             </div>
+
             <div role="main" class="ui-content">
                 <h3>Edit Profile</h3>
                 <label for="profile-email">Email Address</label>
