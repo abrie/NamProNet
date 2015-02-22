@@ -1,5 +1,4 @@
-$(document).on('pageinit', function(){
-    console.log("running post");
+$("#page-login").on('pagecreate', function(){
     $("#btn-submit").click( doLogin );
 
     function doLogin() {
