@@ -1,21 +1,13 @@
 $("#page-login").on('pagecreate', function(){
     console.log("login page created.");
-    $("#btn-submit").click( doLogin );
 
-    function doLogin() {
-        var email = $("#txt-email").val();
-        var password = $("#txt-password").val();
-        var jqxhr = $.post(
-                "http://192.168.178.244:3000/users/sign_in",
-                {user:{email:email, password:password}},
-            function(result) {
-                window.localStorage["email"] = email;
-                $.mobile.changePage("profile.html");
-            })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            window.localStorage["email"] = undefined;
-            console.log(textStatus, errorThrown);
-            alert( "error" );
-        });
+    window.localStorage["email"] = "a@a.a";
+    window.localStorage["password"] = "123456789";
+
+    if( isAuthorized() ) {
+        $.mobile.changePage("profile.html");
+    }
+    else {
+        $("#btn-submit").click( doLogin );
     }
 });
