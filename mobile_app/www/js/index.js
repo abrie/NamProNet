@@ -45,6 +45,11 @@ function removeAuthorization() {
     window.localStorage["password"] = undefined;
 }
 
+function mockAuthorization() {
+    window.localStorage["email"] = "a@a.a";
+    window.localStorage["password"] = "123456789";
+}
+
 function doLogin() {
     var email = $("#txt-email").val();
     var password = $("#txt-password").val();
@@ -65,7 +70,7 @@ function doLogin() {
 }
 
 function populateProfile(email, profile) {
-    $("#txt-email").val(email);
+    $("#profile-email").val(email);
     $("#select-region option").each( function() {
         if($(this).text() == profile.region) {
             $(this).attr('selected','selected');
@@ -88,6 +93,6 @@ function requestProfile(email, callback) {
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
-            alert( "network request failed" );
+            alert( "network error while requesting profile" );
         });
 }
