@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profile/', to: 'profile#show'
+  get 'profile/', to: 'profile#load'
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
