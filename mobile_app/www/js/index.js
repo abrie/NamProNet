@@ -25,6 +25,10 @@ var app = {
 
 app.initialize();
 
+function servicePath(path) {
+    return "http://192.168.178.244:3000/" + path;
+}
+
 function isAuthorized() {
     var email = window.localStorage["email"];
     var password = window.localStorage["password"];
@@ -47,7 +51,7 @@ function doLogin() {
     var credentials = {user:{email:email, password:password}};
 
     var jqxhr = $.post(
-        "http://192.168.178.244:3000/users/sign_in",
+        servicePath("users/sign_in"),
         credentials,
         function(result) {
             storeAuthorization(email, password);
@@ -77,7 +81,7 @@ function populateProfile(email, profile) {
 
 function requestProfile(email, callback) {
     var jqxhr = $.get(
-        "http://192.168.178.244:3000/profile",
+        servicePath("profile"),
         {email:email},
         function(data) {
             callback(email, data.profile);
