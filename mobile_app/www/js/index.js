@@ -54,6 +54,20 @@ function doLogout() {
     console.log("logout requested...");
 }
 
+function doRegistration() {
+    var email = $("#register-email").val();
+    var password = $("#register-password").val();
+    var confirm_password = $("#register-confirm-password").val();
+    var credentials = {
+        user:{
+            email:email,
+            password:password,
+            confirmation_password:confirmation_password
+        }
+    };
+    console.log(credentials);
+}
+
 function doLogin() {
     var email = $("#txt-email").val();
     var password = $("#txt-password").val();

@@ -7,6 +7,6 @@ $("#page-login").on('pagecreate', function(){
         $.mobile.changePage("profile.html");
     }
     else {
-        $("#btn-submit").click( doLogin );
+        $("#login-submit-btn").click( doLogin );
     }
 });
