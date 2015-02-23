@@ -49,8 +49,13 @@ var pageInit = {
 
 app.initialize();
 
-function servicePath(path) {
-    return "http://192.168.178.116:3000/" + path;
+function servicePath(path, format) {
+    var result = "http://192.168.178.116:3000/" + path;
+    if( format !== undefined ) {
+        result = result + "." + format;
+    }
+
+    return result;
 }
 
 function isAuthorized() {
@@ -96,24 +101,27 @@ function doRegistration() {
         user:{
             email:email,
             password:password,
-            password_confirmation:password_confirmation
+            password_confirmation:password_confirmation,
         }
     };
 
     var jqxhr = $.ajax({
         type: "POST",
-        url: servicePath("users"),
+        url: servicePath("users","json"),
         data: data
         })
         .done(function( result ) {
             storeAuthorization(email, password);
             $("body").pagecontainer("change", "profile.html");
         })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown, jqXHR);
-            alert( "network error while registering account" );
+        .fail(function(xhr, textStatus, errorThrown) {
+            if( xhr.responseJSON ) {
+                console.log(xhr.responseJSON);
+            }
+            else {
+                alert("request failed:", textStatus);
+            }
         });
-
 }
 
 function registerInit() {

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'profile/', to: 'profile#load'
   put 'profile/', to: 'profile#update'
 
-  devise_for :users
+  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
