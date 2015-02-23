@@ -90,6 +90,7 @@ function doLogin() {
 function populateProfile(email, profile) {
     $("#profile-email").val(email);
     $("#profile-dob").val(profile.dob);
+    $("#profile-skills").val(profile.skills);
     $("#select-town").val(profile.town).change();
     $("#select-region").val(profile.region).change();
     $("#select-specialty").val(profile.specialty).change();
