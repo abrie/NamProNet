@@ -160,17 +160,21 @@ function doLogin() {
     var password = $("#login-password").val();
     var credentials = {user:{email:email, password:password}};
 
-    var jqxhr = $.post(
-        servicePath("users/sign_in"),
+    $.post(
+        servicePath("users/sign_in", "json"),
         credentials,
         function(result) {
             storeAuthorization(email, password);
             $("body").pagecontainer("change", "profile.html");
         })
-        .fail(function(jqXHR, textStatus, errorThrown) {
+        .fail(function(xhr, textStatus, errorThrown) {
             removeAuthorization();
-            console.log(textStatus, errorThrown);
-            alert( "error" );
+            if( xhr.responseJSON ) {
+                console.log(xhr.responseJSON);
+            }
+            else {
+                alert("request failed:", textStatus);
+            }
         });
 }
 
