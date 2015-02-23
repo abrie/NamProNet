@@ -104,27 +104,30 @@ function populateProfile(email, profile) {
 
 function updateProfile() {
     var data = {
-        town : $("#select-town option:selected").text(),
-        region : $("#select-region option:selected").text(),
-        dob : $("#profile-dob").val(),
-        specialty : $("#select-specialty").val(),
-        skills : $("#profile-skills").val(),
-        email : $("#profile-email").val() 
+        email : $("#profile-email").val(),
+        profile: {
+            town : $("#select-town option:selected").text(),
+            region : $("#select-region option:selected").text(),
+            dob : $("#profile-dob").val(),
+            specialty : $("#select-specialty").val(),
+            skills : $("#profile-skills").val(),
+        }
     };
 
     console.log(data);
 
-    var jqxhr = $.put(
-        servicePath("profile"),
-        data,
-        function(result) {
-            console.log("profile updated.");
+    var jqxhr = $.ajax({
+        type: "PUT",
+        url: servicePath("profile"),
+        data: data 
+        })
+        .done(function( msg ) {
+            console.log("profile update response:", msg);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
             alert( "network error while updating profile" );
         });
-
 }
 
 function requestProfile(email, callback) {
