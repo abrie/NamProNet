@@ -35,7 +35,15 @@ var app = {
 var pageInit = {
     inits: {},
     targetFunction: function() { console.log("default"); },
-    run: function(id) { this.inits[id](); },
+    run: function(id) { 
+        var func = this.inits[id];
+        if( func !== undefined ) {
+            this.inits[id](); 
+        }
+        else {
+            console.log("no pageChange event for:", id);
+        }
+    },
 };
 
 app.initialize();
