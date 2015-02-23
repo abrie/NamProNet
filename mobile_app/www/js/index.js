@@ -88,7 +88,6 @@ function doLogin() {
 }
 
 function populateProfile(email, profile) {
-    console.log(profile);
     $("#profile-email").val(email);
     $("#select-town").val(profile.town).change();
     $("#select-region").val(profile.region).change();
