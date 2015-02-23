@@ -88,6 +88,7 @@ function doLogin() {
 }
 
 function populateProfile(email, profile) {
+    console.log(profile);
     $("#profile-email").val(email);
     $("#select-town").val(profile.town).change();
     $("#select-region").val(profile.region).change();
@@ -111,7 +112,6 @@ function updateProfile() {
         })
         .done(function( result ) {
             populateProfile(result.email, result.profile);
-            console.log("profile update response:", msg);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
