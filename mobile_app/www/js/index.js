@@ -170,7 +170,9 @@ function doLogin() {
         .fail(function(xhr, textStatus, errorThrown) {
             removeAuthorization();
             if( xhr.responseJSON ) {
-                console.log(xhr.responseJSON);
+                var message = xhr.responseJSON.error;
+                $("#message-login-failed").html(message);
+                $("#dlg-invalid-credentials").popup("open");
             }
             else {
                 alert("request failed:", textStatus);
