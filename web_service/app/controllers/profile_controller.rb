@@ -1,25 +1,37 @@
 class ProfileController < ApplicationController
   def load
       user = User.find_by email: params[:email] 
-      profile = Profile.find_or_initialize_by(
-        user_id: user.id,
-        first_name: "undefined",
-        last_name: "undefined",
-        region: "undefined",
-        town: "undefined",
-        specialty: "undefined",
-        dob: Date.yesterday,
-        skills: "none")
-      profile.save
+      profile = Profile.find_by(user_id: user.id)
 
-      render :json => {"profile" => profile}
+      if profile.nil? then
+        profile = Profile.new(
+          user_id: user.id,
+          first_name: "unspecified",
+          last_name: "unspecified",
+          region: "unspecified",
+          town: "unspecified",
+          specialty: "unspecified",
+          dob: Date.yesterday,
+          skills: "unspecified")
+        profile.save
+      end
+
+      render :json => {
+        "email" => params[:email],
+        "profile" => profile
+      }
   end
 
   def update
     params.require(:profile).permit!
     user = User.find_by email: params[:email] 
     profile = Profile.find_by( user_id: user.id )
-    result = profile.update(params[:profile])
-    render :json => {"result" => result}
+    profile.update(params[:profile])
+
+    render :json => {
+      "email" => params[:email],
+      "profile" => profile
+    } 
+
   end
 end

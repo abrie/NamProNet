@@ -89,39 +89,28 @@ function doLogin() {
 
 function populateProfile(email, profile) {
     $("#profile-email").val(email);
-    $("#select-region option").each( function() {
-        if($(this).text() == profile.region) {
-            $(this).attr('selected','selected');
-        }
-    });
-
-    $("#select-town option").each( function() {
-        if($(this).text() == profile.town) {
-            $(this).attr('selected','selected');
-        }
-    });
+    $("#select-town").val(profile.town).change();
+    $("#select-region").val(profile.region).change();
+    $("#select-specialty").val(profile.specialty).change();
 }
 
 function updateProfile() {
-    var data = {
-        email : $("#profile-email").val(),
-        profile: {
-            town : $("#select-town option:selected").text(),
-            region : $("#select-region option:selected").text(),
-            dob : $("#profile-dob").val(),
-            specialty : $("#select-specialty").val(),
-            skills : $("#profile-skills").val(),
-        }
+    var email = $("#profile-email").val();
+    var profile = {
+        town : $("#select-town").val(),
+        region : $("#select-region").val(),
+        dob : $("#profile-dob").val(),
+        specialty : $("#select-specialty").val(),
+        skills : $("#profile-skills").val(),
     };
-
-    console.log(data);
 
     var jqxhr = $.ajax({
         type: "PUT",
         url: servicePath("profile"),
-        data: data 
+        data: {email:email, profile:profile}, 
         })
-        .done(function( msg ) {
+        .done(function( result ) {
+            populateProfile(result.email, result.profile);
             console.log("profile update response:", msg);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -131,10 +120,12 @@ function updateProfile() {
 }
 
 function requestProfile(email, callback) {
+    console.log("requesting profile.");
     var jqxhr = $.get(
         servicePath("profile"),
         {email:email},
         function(data) {
+            console.log("profile received.");
             callback(email, data.profile);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
