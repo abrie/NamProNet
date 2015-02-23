@@ -23,7 +23,16 @@
                 <label for="register-password-confirm">Confirm Password</label>
                 <input type="password" name="register-password-confirm" id="register-password-confirm" value="">
 
-                <a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="register-submit-btn" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+                <a href="#" data-rel="popup" data-transition="pop" data-position-to="window" id="register-submit-btn" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
+                <div data-role="popup" id="dlg-invalid-registration" data-dismissible="false" style="max-width:400px;">
+                    <div role="main" class="ui-content">
+                        <h3 class="mc-text-danger">Login Failed</h3>
+                        <ul id="message-registration-failed"><li>error list</li></ul>
+                        <div class="mc-text-center">
+                            <a href="register.html" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a>
+                        </div>
+                    </div>
+                </div>
             </div><!-- /content -->
         </div>
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>

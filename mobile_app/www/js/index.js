@@ -116,7 +116,14 @@ function doRegistration() {
         })
         .fail(function(xhr, textStatus, errorThrown) {
             if( xhr.responseJSON ) {
-                console.log(xhr.responseJSON);
+                var errors = xhr.responseJSON.errors;
+                for(var error in errors) {
+                    for(var index = 0; index < errors[error].length; index++) {
+                        var li = $("li").html(error + ": " + errors[error][index]); 
+                        $("#message-registration-failed").append(li);
+                    }
+                }
+                $("#dlg-invalid-registration").popup("open");
             }
             else {
                 alert("request failed:", textStatus);
