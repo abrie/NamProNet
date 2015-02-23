@@ -197,6 +197,8 @@ function profileInit() {
 }
 
 function populateProfile(email, profile) {
+    $("#profile-firstname").val(profile.first_name);
+    $("#profile-lastname").val(profile.last_name);
     $("#profile-email").val(email);
     $("#profile-dob").val(profile.dob);
     $("#profile-skills").val(profile.skills);
@@ -208,6 +210,8 @@ function populateProfile(email, profile) {
 function updateProfile() {
     var email = $("#profile-email").val();
     var profile = {
+        first_name: $("#profile-firstname").val(),
+        last_name: $("#profile-lastname").val(),
         town : $("#select-town").val(),
         region : $("#select-region").val(),
         dob : $("#profile-dob").val(),
