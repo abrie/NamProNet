@@ -1,6 +1,5 @@
-$("#page-login").on('pagecreate', function(){
-    console.log("login page created.");
-
+$("#page-login").on('pageinit', function(){
+    console.log("login page here.");
     /* these calls are for development purposes */
     //removeAuthorization();
     //mockAuthorization();

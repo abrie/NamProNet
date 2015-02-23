@@ -51,7 +51,17 @@ function mockAuthorization() {
 }
 
 function doLogout() {
-    console.log("logout requested...");
+    var jqxhr = $.ajax({
+        type: "DELETE",
+        url: servicePath("users/sign_out")})
+        .done(function( result ) {
+            removeAuthorization();
+            $("body").pagecontainer("change", "login.html");
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown, jqXHR);
+            alert( "error while logging out" );
+        });
 }
 
 function doRegistration() {
