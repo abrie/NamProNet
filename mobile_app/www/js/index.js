@@ -16,11 +16,26 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        pageInit.inits["page-profile"] = profileInit;
+        pageInit.inits["page-login"] = loginInit;
+        pageInit.inits["page-logout"] = logoutInit;
+        $("body").pagecontainer({
+              change: function( event, ui ) {
+                  var pageId = ui.toPage[0].id;
+                  pageInit.run(pageId);
+              }
+        });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
     }
+};
+
+var pageInit = {
+    inits: {},
+    targetFunction: function() { console.log("default"); },
+    run: function(id) { this.inits[id](); },
 };
 
 app.initialize();
@@ -78,6 +93,28 @@ function doRegistration() {
     console.log(credentials);
 }
 
+function logoutInit() {
+    if( isAuthorized() ) {
+        $("#logout-btn").click( doLogout );
+    }
+}
+
+function loginInit() {
+    console.log("login page changed.");
+    /* these calls are for development purposes */
+    //removeAuthorization();
+    //mockAuthorization();
+    /********************************************/
+
+    if( isAuthorized() ) {
+        console.log("previously authorized, skipping to profile.");
+        $.mobile.changePage("profile.html");
+    }
+    else {
+        $("#login-submit-btn").click( doLogin );
+    }
+}
+
 function doLogin() {
     var email = $("#login-email").val();
     var password = $("#login-password").val();
@@ -88,13 +125,22 @@ function doLogin() {
         credentials,
         function(result) {
             storeAuthorization(email, password);
-            $.mobile.changePage("profile.html");
+            $("body").pagecontainer("change", "profile.html");
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             removeAuthorization();
             console.log(textStatus, errorThrown);
             alert( "error" );
         });
+}
+
+function profileInit() {
+    console.log("profile page change");
+    requestProfile( window.localStorage["email"], populateProfile );
+
+    $("#profile-update-btn").click( function() {
+        updateProfile(); 
+    });
 }
 
 function populateProfile(email, profile) {
