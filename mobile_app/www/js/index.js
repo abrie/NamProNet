@@ -19,6 +19,7 @@ var app = {
         pageInit.inits["page-profile"] = profileInit;
         pageInit.inits["page-login"] = loginInit;
         pageInit.inits["page-logout"] = logoutInit;
+        pageInit.inits["page-register"] = registerInit;
         $("body").pagecontainer({
               change: function( event, ui ) {
                   var pageId = ui.toPage[0].id;
@@ -89,15 +90,39 @@ function doLogout() {
 function doRegistration() {
     var email = $("#register-email").val();
     var password = $("#register-password").val();
-    var confirm_password = $("#register-confirm-password").val();
-    var credentials = {
+    var password_confirmation = $("#register-confirm-password").val();
+
+    var data = {
         user:{
             email:email,
             password:password,
-            confirmation_password:confirmation_password
+            password_confirmation:password_confirmation
         }
     };
-    console.log(credentials);
+
+    var jqxhr = $.ajax({
+        type: "POST",
+        url: servicePath("users"),
+        data: data
+        })
+        .done(function( result ) {
+            storeAuthorization(email, password);
+            $("body").pagecontainer("change", "profile.html");
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown, jqXHR);
+            alert( "network error while registering account" );
+        });
+
+}
+
+function registerInit() {
+    if( isAuthorized() ) {
+        $.mobile.changePage("logout.html");
+    }
+    else {
+        $("#register-submit-btn").click( doRegistration );
+    }
 }
 
 function logoutInit() {
