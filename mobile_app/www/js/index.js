@@ -26,13 +26,13 @@ var app = {
 app.initialize();
 
 function servicePath(path) {
-    return "http://192.168.178.244:3000/" + path;
+    return "http://192.168.178.116:3000/" + path;
 }
 
 function isAuthorized() {
-    var email = window.localStorage["email"];
-    var password = window.localStorage["password"];
-    return email !== undefined && password !== undefined;
+    var hasEmail = window.localStorage.email !== "undefined";
+    var hasPassword = window.localStorage.password !== "undefined";
+    return hasEmail && hasPassword;
 }
 
 function storeAuthorization(email, password) {

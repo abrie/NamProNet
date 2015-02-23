@@ -1,9 +1,13 @@
 $("#page-login").on('pagecreate', function(){
     console.log("login page created.");
 
-    mockAuthorization();
+    /* these calls are for development purposes */
+    //removeAuthorization();
+    //mockAuthorization();
+    /********************************************/
 
     if( isAuthorized() ) {
+        console.log("previously authorized, skipping to profile.");
         $.mobile.changePage("profile.html");
     }
     else {
