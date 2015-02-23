@@ -45,24 +45,23 @@ function servicePath(path) {
 }
 
 function isAuthorized() {
-    var hasEmail = window.localStorage.email !== "undefined";
-    var hasPassword = window.localStorage.password !== "undefined";
-    return hasEmail && hasPassword;
+    var email = window.localStorage.getItem("email");
+    var password = window.localStorage.getItem("password");
+    return email !== null && password !== null;
 }
 
 function storeAuthorization(email, password) {
-    window.localStorage["email"] = email;
-    window.localStorage["password"] = password;
+    window.localStorage.setItem("email", email);
+    window.localStorage.setItem("password", password);
 }
 
 function removeAuthorization() {
-    window.localStorage["email"] = undefined;
-    window.localStorage["password"] = undefined;
+    window.localStorage.removeItem("email");
+    window.localStorage.removeItem("password");
 }
 
 function mockAuthorization() {
-    window.localStorage["email"] = "a@a.a";
-    window.localStorage["password"] = "123456789";
+    storeAuthorization("a@a.a", "123456789");
 }
 
 function doLogout() {
