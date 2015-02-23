@@ -78,7 +78,7 @@ function doLogout() {
         url: servicePath("users/sign_out")})
         .done(function( result ) {
             removeAuthorization();
-            $("body").pagecontainer("change", "login.html");
+            $("body").pagecontainer("change", "index.html");
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
