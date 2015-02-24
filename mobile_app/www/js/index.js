@@ -9,6 +9,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         pageInit.inits["page-profile"] = profileInit;
+        pageInit.inits["page-profile-search"] = profileSearchInit;
         pageInit.inits["page-login"] = loginInit;
         pageInit.inits["page-logout"] = logoutInit;
         pageInit.inits["page-register"] = registerInit;
@@ -243,6 +244,36 @@ function profileInit() {
     $("#profile-update-btn").click( function() {
         updateProfile(); 
     });
+}
+
+function profileSearchInit() {
+    console.log("profile search change");
+
+    $("#profile-search-submit-btn").click( function() {
+        doProfileSearch(); 
+    });
+}
+
+function doProfileSearch() {
+    var criteria = {
+        town : $("#select-town").val(),
+        region : $("#select-region").val(),
+        specialty : $("#select-specialty").val(),
+    };
+
+    var jqxhr = $.ajax({
+        type: "GET",
+        url: servicePath("profile/search"),
+        data: {criteria:criteria}, 
+        })
+        .done(function( result ) {
+            console.log(result);
+            $("body").pagecontainer("change", "profile-list.html");
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown, jqXHR);
+            alert( "network error while updating profile" );
+        });
 }
 
 function populateProfile(email, profile) {
