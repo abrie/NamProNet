@@ -166,7 +166,13 @@ function jobsInit() {
         data: {email:credentials.email} 
         })
         .done(function( result ) {
-            console.log(result);
+            var jobs = result.jobs;
+            console.log(jobs);
+            var ul = $("#jobs-list");
+            for(var index = 0; index < jobs.length; index++) {
+                var job = jobs[index];
+                $("<li>").html(job.summary).appendTo(ul);
+            }
         })
         .fail(function(xhr, textStatus, errorThrown) {
             console.log(xhr, textStatus, errorThrown);
