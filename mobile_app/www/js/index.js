@@ -60,6 +60,7 @@ function servicePath(path, format) {
         result = result + "." + format;
     }
 
+    console.log("servicePath:", result);
     return result;
 }
 
@@ -292,9 +293,9 @@ function profileListInit(extra) {
         var tr = $("<tr>");
         $("<td>").html(profile.first_name).appendTo(tr); 
         $("<td>").html(profile.last_name).appendTo(tr); 
+        $("<td>").html(profile.specialty).appendTo(tr); 
         $("<td>").html(profile.region).appendTo(tr); 
         $("<td>").html(profile.town).appendTo(tr); 
-        $("<td>").html(profile.specialty).appendTo(tr); 
         $("#profile-table-body").append(tr);
     } 
 }
