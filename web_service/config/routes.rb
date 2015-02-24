@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/', to: 'welcome#index'
+
   get 'profile/', to: 'profile#load'
   put 'profile/', to: 'profile#update'
   get 'profile/search', to: 'profile#search'
