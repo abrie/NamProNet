@@ -10,8 +10,10 @@ class JobsController < ApplicationController
 
   def create
     params.permit!
+    user = User.find_by email: params[:email] 
     job = Job.new
     job.summary = params[:job][:summary] 
+    job.user_id = user.id
     job.save
 
     render :json => {"job":job}
