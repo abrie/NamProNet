@@ -2,9 +2,9 @@ class ProfileController < ApplicationController
   def search
     params.permit!
     criteria = {}
-    criteria.region = params[:criteria][:region] if not params[:criteria][:region].eql? "all" 
-    criteria.town = params[:criteria][:town] if not params[:criteria][:town].eql? "all" 
-    criteria.specialty = params[:criteria][:specialty] if not params[:criteria][:specialty].eql? "all" 
+    criteria[:region] = params[:criteria][:region] if not params[:criteria][:region].eql? "all" 
+    criteria[:town] = params[:criteria][:town] if not params[:criteria][:town].eql? "all" 
+    criteria[:specialty] = params[:criteria][:specialty] if not params[:criteria][:specialty].eql? "all" 
     results = Profile.where(criteria)
 
     render :json => {"results" => results}

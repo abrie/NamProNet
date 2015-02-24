@@ -10,15 +10,16 @@ var app = {
         app.receivedEvent('deviceready');
         pageInit.inits["page-profile"] = profileInit;
         pageInit.inits["page-profile-search"] = profileSearchInit;
+        pageInit.inits["page-profile-list"] = profileListInit;
         pageInit.inits["page-login"] = loginInit;
         pageInit.inits["page-logout"] = logoutInit;
         pageInit.inits["page-register"] = registerInit;
         pageInit.inits["page-job-list"] = jobListInit;
         pageInit.inits["page-job-create"] = jobCreateInit;
         $("body").pagecontainer({
-              change: function( event, ui ) {
-                  var pageId = ui.toPage[0].id;
-                  pageInit.run(pageId);
+              change: function( e, data ) {
+                  var pageId = data.toPage[0].id;
+                  pageInit.run(pageId, data.options.extra);
               }
         });
     },
@@ -30,10 +31,10 @@ var app = {
 var pageInit = {
     inits: {},
     targetFunction: function() { console.log("default"); },
-    run: function(id) { 
+    run: function(id, extra) { 
         var func = this.inits[id];
         if( func !== undefined ) {
-            this.inits[id](); 
+            this.inits[id](extra); 
         }
         else {
             console.log("no pageChange event for:", id);
@@ -155,11 +156,11 @@ function doJobCreate() {
         });
 }
 
-function jobCreateInit() {
+function jobCreateInit(extras) {
         $("#job-create-submit-btn").click( doJobCreate );
 }
 
-function jobListInit() {
+function jobListInit(extras) {
     var credentials = getAuthorizedCredentials();
     var jqxhr = $.ajax({
         type: "GET",
@@ -180,7 +181,7 @@ function jobListInit() {
         });
 }
 
-function registerInit() {
+function registerInit(extras) {
     if( isAuthorized() ) {
         $.mobile.changePage("logout.html");
     }
@@ -189,13 +190,13 @@ function registerInit() {
     }
 }
 
-function logoutInit() {
+function logoutInit(extras) {
     if( isAuthorized() ) {
         $("#logout-btn").click( doLogout );
     }
 }
 
-function loginInit() {
+function loginInit(extras) {
     console.log("login page changed.");
     /* these calls are for development purposes */
     //removeAuthorization();
@@ -236,7 +237,7 @@ function doLogin() {
         });
 }
 
-function profileInit() {
+function profileInit(extras) {
     console.log("profile page change");
     var credentials = getAuthorizedCredentials();
     requestProfile( credentials.email, populateProfile );
@@ -246,12 +247,22 @@ function profileInit() {
     });
 }
 
-function profileSearchInit() {
+function profileSearchInit(extras) {
     console.log("profile search change");
 
     $("#profile-search-submit-btn").click( function() {
         doProfileSearch(); 
     });
+}
+
+function profileListInit(extra) {
+    console.log("profile list change");
+    results = extra.results;
+    ul = $("#profile-list");
+    for( var index = 0; index < results.length; index++ ) {
+        var profile = results[index];
+        $("<li>").html(profile.last_name + ", " + profile.first_name).appendTo(ul);
+    } 
 }
 
 function doProfileSearch() {
@@ -268,7 +279,7 @@ function doProfileSearch() {
         })
         .done(function( result ) {
             console.log(result);
-            $("body").pagecontainer("change", "profile-list.html");
+            $("body").pagecontainer("change", "profile-list.html", {extra:result});
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
