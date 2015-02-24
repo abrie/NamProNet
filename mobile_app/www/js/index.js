@@ -13,6 +13,7 @@ var app = {
         pageInit.inits["page-logout"] = logoutInit;
         pageInit.inits["page-register"] = registerInit;
         pageInit.inits["page-jobs"] = jobsInit;
+        pageInit.inits["page-jobedit"] = jobeditInit;
         $("body").pagecontainer({
               change: function( event, ui ) {
                   var pageId = ui.toPage[0].id;
@@ -128,6 +129,33 @@ function doRegistration() {
                 alert("request failed:", textStatus);
             }
         });
+}
+
+function doJobedit() {
+    var credentials = getAuthorizedCredentials();
+
+    var job = {
+        summary: $("#job-summary").val(),
+        town : $("#select-town").val(),
+        region : $("#select-region").val(),
+        specialty : $("#select-specialty").val(),
+    };
+
+    var jqxhr = $.ajax({
+        type: "POST",
+        url: servicePath("job","json"),
+        data: {email:credentials.email, job:job} 
+        })
+        .done(function( result ) {
+            console.log(result);
+        })
+        .fail(function(xhr, textStatus, errorThrown) {
+            console.log(xhr, textStatus, errorThrown);
+        });
+}
+
+function jobeditInit() {
+        $("#jobedit-submit-btn").click( doJobedit );
 }
 
 function jobsInit() {

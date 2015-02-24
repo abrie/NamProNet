@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   put 'profile/', to: 'profile#update'
 
   get 'jobs/', to: 'jobs#index'
+  post 'job/', to: 'jobs#create'
 
   devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
   devise_for :admin_users, ActiveAdmin::Devise.config
