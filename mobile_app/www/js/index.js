@@ -13,7 +13,7 @@ var app = {
         pageInit.inits["page-logout"] = logoutInit;
         pageInit.inits["page-register"] = registerInit;
         pageInit.inits["page-jobs"] = jobsInit;
-        pageInit.inits["page-jobedit"] = jobeditInit;
+        pageInit.inits["page-job-create"] = jobCreateInit;
         $("body").pagecontainer({
               change: function( event, ui ) {
                   var pageId = ui.toPage[0].id;
@@ -131,7 +131,7 @@ function doRegistration() {
         });
 }
 
-function doJobedit() {
+function doJobCreate() {
     var credentials = getAuthorizedCredentials();
 
     var job = {
@@ -154,8 +154,8 @@ function doJobedit() {
         });
 }
 
-function jobeditInit() {
-        $("#jobedit-submit-btn").click( doJobedit );
+function jobCreateInit() {
+        $("#job-create-submit-btn").click( doJobCreate );
 }
 
 function jobsInit() {
