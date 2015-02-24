@@ -12,7 +12,7 @@ var app = {
         pageInit.inits["page-login"] = loginInit;
         pageInit.inits["page-logout"] = logoutInit;
         pageInit.inits["page-register"] = registerInit;
-        pageInit.inits["page-jobs"] = jobsInit;
+        pageInit.inits["page-job-list"] = jobListInit;
         pageInit.inits["page-job-create"] = jobCreateInit;
         $("body").pagecontainer({
               change: function( event, ui ) {
@@ -158,7 +158,7 @@ function jobCreateInit() {
         $("#job-create-submit-btn").click( doJobCreate );
 }
 
-function jobsInit() {
+function jobListInit() {
     var credentials = getAuthorizedCredentials();
     var jqxhr = $.ajax({
         type: "GET",
