@@ -11,23 +11,22 @@
     </head>
     <body>
         <div data-role="page" id="page-job-list">
-            <div data-role="panel" data-display="push" id="panel-nav" data-theme="c">
+            <div data-role="panel" data-display="push" id="panel-nav" data-theme="a">
                 <ul data-role="listview">
-                    <li data-icon='false'><a href="home.html"><i class='lIcon fa fa-home'>Home</i></a></li>
-                    <li data-icon='false'><a href="profile.html"><i class='lIcon fa fa-briefcase'>Profile</i></a></li>
-                    <li data-icon='false'><a href="job-list.html"><i class='lIcon fa fa-briefcase'>Job List</i></a></li>
-                    <li data-icon='false'><a href="job-create.html"><i class='lIcon fa fa-briefcase'>Create Job</i></a></li>
-                    <li data-icon='false'><a href="logout.html"><i class='lIcon fa fa-briefcase'>Logout</i></a></li>
+                    <li data-icon='false'><a href="home.html">Home</a></li>
+                    <li data-icon='user'><a href="profile.html">Profile</a></li>
+                    <li data-icon='search'><a href="profile-search.html">Search</a></li>
+                    <li data-icon='bullets'><a href="#">Job List</a></li>
+                    <li data-icon='action'><a href="job-create.html">Create Job</a></li>
+                    <li data-icon='false'><a href="logout.html">Logout</a></li>
                 </ul>
             </div>
-
-            <div data-role="header" data-theme="c">
-                <h1>Namibia Professional Network</h1>
-                <a href="#panel-nav" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <div data-role="header" data-theme="a">
+                <a href="#panel-nav" data-icon="bars">menu</a>
+                <h1>Jobs</h1>
             </div>
 
             <div role="main" class="ui-content">
-                <h3>Jobs</h3>
                 <ul id="jobs-list"></ul>
             </div>
         </div>

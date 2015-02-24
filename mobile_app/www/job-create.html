@@ -11,26 +11,25 @@
     </head>
     <body>
         <div data-role="page" id="page-job-create">
-            <div data-role="panel" data-display="push" id="panel-nav" data-theme="c">
+            <div data-role="panel" data-display="push" id="panel-nav" data-theme="a">
                 <ul data-role="listview">
-                    <li data-icon='false'><a href="home.html"><i class='lIcon fa fa-home'>Home</i></a></li>
-                    <li data-icon='false'><a href="profile.html"><i class='lIcon fa fa-briefcase'>Profile</i></a></li>
-                    <li data-icon='false'><a href="job-list.html"><i class='lIcon fa fa-briefcase'>Job List</i></a></li>
-                    <li data-icon='false'><a href="job-create.html"><i class='lIcon fa fa-briefcase'>Create Job</i></a></li>
-                    <li data-icon='false'><a href="logout.html"><i class='lIcon fa fa-briefcase'>Logout</i></a></li>
+                    <li data-icon='false'><a href="home.html">Home</a></li>
+                    <li data-icon='user'><a href="profile.html">Profile</a></li>
+                    <li data-icon='search'><a href="profile-search.html">Search</a></li>
+                    <li data-icon='bullets'><a href="job-list.html">Job List</a></li>
+                    <li data-icon='action'><a href="#">Create Job</a></li>
+                    <li data-icon='false'><a href="logout.html">Logout</a></li>
                 </ul>
             </div>
-
             <div data-role="header" data-theme="c">
-                <h1>Namibia Professional Network</h1>
-                <a href="#panel-nav" data-ajax="false"><i class='fa fa-bars'></i></a>
+                <a href="#panel-nav" data-icon="bars">menu</a>
+                <h1>Create a Job</h1>
             </div>
 
             <div role="main" class="ui-content">
-                <h3>Create Job</h3>
                 <label for="job-summary">Summary</label>
                 <input type="text" name="job-summary" id="job-summary" value="">
-                <label for="txt-region">Region</label>
+                <label for="select-region">Region</label>
                 <select name="select-region" id="select-region" data-native-menu="true">
                     <option value="unspecified" disabled>Select your region</option>
                     <option value="Erongo">Erongo Region  </option>
@@ -48,7 +47,7 @@
                     <option value="otjozondjupa">Otjozondjupa Region</option>
                 </select>
 
-                <label for="txt-town">Town</label>
+                <label for="select-town">Town</label>
                 <select name="select-town" id="select-town" data-native-menu="true">
                     <option value="unspecified" disabled>Select your town</option>
                     <option value="Omuthiya">Omuthiya</option>
@@ -65,7 +64,7 @@
                     <option value="Nkurenkuru">Nkurenkuru</option>
                 </select>
 
-                <label for="txt-specialist">Specialist</label>
+                <label for="select-specialist">Specialist</label>
                 <select name="select-specialty" id="select-specialty" data-native-menu="true">
                     <option value="unspecified" disabled>Select your specialty</option>
                     <option value="Science">Science</option>
