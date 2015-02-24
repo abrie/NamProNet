@@ -119,7 +119,7 @@ function doRegistration() {
                 var errors = xhr.responseJSON.errors;
                 for(var error in errors) {
                     for(var index = 0; index < errors[error].length; index++) {
-                        var li = $("li").html(error + ": " + errors[error][index]); 
+                        var li = $("<li>").html(error + " " + errors[error][index]); 
                         $("#message-registration-failed").append(li);
                     }
                 }
@@ -171,7 +171,7 @@ function jobsInit() {
             var ul = $("#jobs-list");
             for(var index = 0; index < jobs.length; index++) {
                 var job = jobs[index];
-                $("<li>").html(job.summary).appendTo(ul);
+                $("<li>").html(job.creator + ":" + job.summary).appendTo(ul);
             }
         })
         .fail(function(xhr, textStatus, errorThrown) {

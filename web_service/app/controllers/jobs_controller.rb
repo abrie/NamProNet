@@ -2,7 +2,10 @@ class JobsController < ApplicationController
   def index
     jobs = []
     Job.find_each do |job|
-      jobs.push({"summary" => job.summary})
+      jobs.push({
+        "summary" => job.summary,
+        "creator" => job.user.profile.last_name,
+      })
     end
 
     render :json => {"jobs" => jobs}
