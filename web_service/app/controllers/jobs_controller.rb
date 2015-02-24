@@ -15,6 +15,7 @@ class JobsController < ApplicationController
     job.summary = params[:job][:summary] 
     job.region = params[:job][:region]
     job.town = params[:job][:town]
+    job.specialty = params[:job][:specialty]
     job.user_id = user.id
     job.save
 
