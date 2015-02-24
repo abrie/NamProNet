@@ -13,6 +13,8 @@ class JobsController < ApplicationController
     user = User.find_by email: params[:email] 
     job = Job.new
     job.summary = params[:job][:summary] 
+    job.region = params[:job][:region]
+    job.town = params[:job][:town]
     job.user_id = user.id
     job.save
 
