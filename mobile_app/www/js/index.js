@@ -16,6 +16,7 @@ var app = {
         pageInit.inits["page-register"] = registerInit;
         pageInit.inits["page-job-list"] = jobListInit;
         pageInit.inits["page-job-create"] = jobCreateInit;
+        pageInit.inits["page-config"] = configInit;
         $("body").pagecontainer({
               change: function( e, data ) {
                   var pageId = data.toPage[0].id;
@@ -44,8 +45,17 @@ var pageInit = {
 
 app.initialize();
 
+function getConfigSettings() {
+    return {
+        protocol: "http",
+        server: window.localStorage.getItem("server"),
+        port: window.localStorage.getItem("port")
+    };
+}
+
 function servicePath(path, format) {
-    var result = "http://192.168.178.116:3000/" + path;
+    config = getConfigSettings();
+    var result = config.protocol+"://"+config.server+":"+config.port+"/" + path;
     if( format !== undefined ) {
         result = result + "." + format;
     }
@@ -78,6 +88,16 @@ function removeAuthorization() {
 
 function mockAuthorization() {
     storeAuthorization("a@a.a", "123456789");
+}
+
+function doConfig() {
+    var protocol = $("#config-protocol").val();
+    var server = $("#config-server").val();
+    var port = $("#config-port").val();
+    window.localStorage.setItem("protocol", protocol);
+    window.localStorage.setItem("server", server);
+    window.localStorage.setItem("port", port);
+    $("body").pagecontainer("change", "index.html");
 }
 
 function doLogout() {
@@ -156,8 +176,16 @@ function doJobCreate() {
         });
 }
 
+function configInit(extras) {
+    var currentConfig = getConfigSettings();
+    $("#config-protocol").val(currentConfig.protocol);
+    $("#config-server").val(currentConfig.server);
+    $("#config-port").val(currentConfig.port);
+    $("#config-submit-btn").click( doConfig );
+}
+
 function jobCreateInit(extras) {
-        $("#job-create-submit-btn").click( doJobCreate );
+    $("#job-create-submit-btn").click( doJobCreate );
 }
 
 function jobListInit(extras) {
