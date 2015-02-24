@@ -261,7 +261,13 @@ function profileListInit(extra) {
     ul = $("#profile-list");
     for( var index = 0; index < results.length; index++ ) {
         var profile = results[index];
-        $("<li>").html(profile.last_name + ", " + profile.first_name).appendTo(ul);
+        var tr = $("<tr>");
+        $("<td>").html(profile.first_name).appendTo(tr); 
+        $("<td>").html(profile.last_name).appendTo(tr); 
+        $("<td>").html(profile.region).appendTo(tr); 
+        $("<td>").html(profile.town).appendTo(tr); 
+        $("<td>").html(profile.specialty).appendTo(tr); 
+        $("#profile-table-body").append(tr);
     } 
 }
 
