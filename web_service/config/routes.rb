@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'profile/', to: 'profile#load'
   put 'profile/', to: 'profile#update'
 
+  get 'jobs/', to: 'jobs#index'
+
   devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
