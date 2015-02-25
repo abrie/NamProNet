@@ -326,6 +326,11 @@ function profileListInit(extra) {
     console.log("profile list change");
     results = extra.results;
     $("#profile-table-body").empty();
+    function getEventHandlerFunction(p) {
+        return function() {
+            console.log(p);
+        };
+    }
     for( var index = 0; index < results.length; index++ ) {
         var profile = results[index];
         var tr = $("<tr>");
@@ -338,6 +343,8 @@ function profileListInit(extra) {
             tr.css({'background':'#82FA58'});
         }
 
+
+        tr.bind('click', getEventHandlerFunction(profile) );
         $("#profile-table-body").append(tr);
     } 
 }
