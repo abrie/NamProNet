@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div data-role="header" data-theme="a">
-                <a href="#panel-nav" data-icon="bars">login</a>
+                <a href="#panel-nav" data-icon="bars" data-iconpos="notext">menu</a>
                 <h1>Welcome</h1>
             </div>
             <div role="main" class="ui-content">
@@ -115,8 +115,14 @@
                 <div class="mc-text-center">
                     <a href="#" id="home-search-submit-btn" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">SEARCH</a>
                 </div>
-                <div data-role="footer" data-position="fixed"> 
-                    <a href="config.html" data-role="button" data-icon="gear">internals</a>
+                <div data-role="footer" data-position="fixed" data-tap-toggle="false" > 
+                    <div data-role="navbar">
+                        <ul >
+                            <li> <a href="login.html" data-role="button" data-icon="lock" >login</a> </li>
+                            <li> <a href="register.html" data-role="button" data-icon="user" >register</a> </li>
+                            <li> <a href="config.html" data-role="button" data-icon="gear" data-iconpos="notext">internals</a> </li>
+                        </ul>
+                    </div>
                 </div>
             </div><!-- /content -->
         </div><!-- /page -->
