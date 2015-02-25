@@ -329,7 +329,7 @@ function profileListInit(extra) {
         $("<td>").html(profile.region).appendTo(tr); 
         $("<td>").html(profile.town).appendTo(tr); 
         if( profile.certified ) {
-            tr.css({'background':'green'});
+            tr.css({'background':'#82FA58'});
         }
 
         $("#profile-table-body").append(tr);
