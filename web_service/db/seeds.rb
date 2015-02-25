@@ -23,5 +23,7 @@ specialties =[ "Science", "Firefighter", "Judge", "Military_officer", "Police_of
     region: regions.sample,
     town: towns.sample, 
     certified: rand(100) > 75 ? true : false,
-    skills: Random.alphanumeric) 
+    skills: Random.paragraphs) 
 end
+
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
