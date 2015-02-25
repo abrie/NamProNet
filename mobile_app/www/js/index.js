@@ -365,9 +365,9 @@ function populateProfile(email, profile) {
     $("#profile-email").val(email);
     $("#profile-dob").val(profile.dob);
     $("#profile-skills").val(profile.skills);
-    $("#select-town").val(profile.town).change();
-    $("#select-region").val(profile.region).change();
-    $("#select-specialty").val(profile.specialty).change();
+    $("#profile-town").val(profile.town).change();
+    $("#profile-region").val(profile.region).change();
+    $("#profile-specialty").val(profile.specialty).change();
 }
 
 function updateProfile() {
@@ -375,10 +375,10 @@ function updateProfile() {
     var profile = {
         first_name: $("#profile-firstname").val(),
         last_name: $("#profile-lastname").val(),
-        town : $("#select-town").val(),
-        region : $("#select-region").val(),
+        town : $("#profile-town").val(),
+        region : $("#profile-region").val(),
         dob : $("#profile-dob").val(),
-        specialty : $("#select-specialty").val(),
+        specialty : $("#profile-specialty").val(),
         skills : $("#profile-skills").val(),
     };
 
