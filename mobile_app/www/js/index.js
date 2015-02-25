@@ -298,6 +298,23 @@ function profileSearchInit(extras) {
     });
 }
 
+function getFakeProfileSearchResults() {
+    var results = [];
+    function fakeResult(first_name, last_name, specialty, region, town) {
+        return {
+            first_name:first_name,
+            last_name:last_name,
+            specialty:specialty,
+            region:region,
+            town:town
+        };
+    }
+    results.push(fakeResult("a","b","c","d","e"));
+    results.push(fakeResult("a1","b2","c2","dd","ed"));
+    results.push(fakeResult("a3","bd","c2","dd","ed"));
+    return {results:results};
+}
+
 function profileListInit(extra) {
     console.log("profile list change");
     results = extra.results;
@@ -333,6 +350,7 @@ function doProfileSearch() {
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
             alert( "network error while updating profile" );
+            $("body").pagecontainer("change", "profile-list.html", {extra:getFakeProfileSearchResults()});
         });
 }
 
