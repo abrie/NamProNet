@@ -17,17 +17,28 @@ var app = {
         pageInit.inits["page-job-list"] = jobListInit;
         pageInit.inits["page-job-create"] = jobCreateInit;
         pageInit.inits["page-config"] = configInit;
+        pageInit.inits["page-front"] = frontInit;
         $("body").pagecontainer({
               change: function( e, data ) {
                   var pageId = data.toPage[0].id;
                   pageInit.run(pageId, data.options.extra);
               }
         });
+
+        var initialPageId = $('body').pagecontainer( 'getActivePage' ).attr( 'id' );
+        pageInit.run(initialPageId);
+
     },
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
     }
 };
+
+function frontInit(extras) {
+    var btn = $("#home-search-submit-btn");
+    btn.click(doProfileSearch);
+    console.log(btn);
+}
 
 var pageInit = {
     inits: {},
