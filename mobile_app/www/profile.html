@@ -17,6 +17,7 @@
                     <li data-icon='search'><a href="profile-search.html">Search</a></li>
                     <li data-icon='bullets'><a href="job-list.html">Job List</a></li>
                     <li data-icon='action'><a href="job-create.html">Create Job</a></li>
+					 <li data-icon='action'><a href="job-create.html">Connection</a></li>
                     <li data-icon='lock'><a href="logout.html">Logout</a></li>
                 </ul>
             </div>
@@ -139,8 +140,8 @@
                <div data-role="footer" data-position="fixed" data-tap-toggle="false" > 
                     <div data-role="navbar">
                         <ul >
-                            <li> <a href="#popinfo" data-role="button" data-icon="info"  data-rel="popup">Info</a> </li>
-                            <li> <a href="#poppp" data-role="button" data-icon="minus"  data-rel="popup">Privacy & policy</a> </li>
+                            <li> <a href="#popinfo" data-role="button" data-icon="info"  data-rel="popup" data-position-to="window" >Info</a> </li>
+                            <li> <a href="#poppp" data-role="button" data-icon="minus"  data-rel="popup" data-position-to="window">Privacy & policy</a> </li>
                             <li> <a href="config.html" data-role="button" data-icon="gear" >setting</a> </li>
                         </ul>
                     </div>
@@ -148,11 +149,13 @@
 			<!---- popups for info ---->	
 
 <div data-role="popup" id="popinfo">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 	<p>Info about Namibia Professional Network<p>
 </div>
 
 <!----- popup for privacy & policy ----->
 <div data-role="popup" id="poppp">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 	<p>Privacy & policy  about Namibia Professional Network<p>
 </div>
 

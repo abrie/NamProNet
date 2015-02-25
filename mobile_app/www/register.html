@@ -39,8 +39,8 @@
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false" > 
                     <div data-role="navbar">
                         <ul >
-                            <li> <a href="#pophelp" data-role="button" data-icon="info"  data-rel="popup">Help</a> </li>
-                            <li> <a href="#poppp" data-role="button" data-icon="minus"  data-rel="popup">Privacy & policy</a> </li>
+                            <li> <a href="#pophelp" data-role="button" data-icon="info"  data-rel="popup" data-position-to="window">Help</a> </li>
+                            <li> <a href="#poppp" data-role="button" data-icon="minus"  data-rel="popup" data-position-to="window">Privacy & policy</a> </li>
                            
                         </ul>
                     </div>
@@ -48,11 +48,13 @@
 			<!---- popups for info ---->	
 
 <div data-role="popup" id="pophelp">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 	<p>help<p>
 </div>
 
 <!----- popup for privacy & policy ----->
 <div data-role="popup" id="poppp">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 	<p>Privacy & policy  about Namibia Professional Network<p>
 </div>
         </div>
