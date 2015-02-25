@@ -117,12 +117,14 @@ function doLogout() {
         type: "DELETE",
         url: servicePath("users/sign_out")})
         .done(function( result ) {
-            removeAuthorization();
-            $("body").pagecontainer("change", "index.html");
+            console.log("sucessfully logged out.");
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
-            alert( "error while logging out" );
+        })
+        .always(function(){
+            removeAuthorization();
+            $("body").pagecontainer("change", "index.html");
         });
 }
 
@@ -272,7 +274,8 @@ function doLogin() {
                 $("#dlg-invalid-credentials").popup("open");
             }
             else {
-                alert("request failed:", textStatus);
+                alert("network:", textStatus);
+                $("body").pagecontainer("change", "profile.html");
             }
         });
 }
