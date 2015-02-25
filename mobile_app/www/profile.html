@@ -23,7 +23,8 @@
 
             <div data-role="header" data-theme="a">
                 <a href="#panel-nav" data-icon="bars" data-iconpos="notext">menu</a>
-                <h1><img src="img/logo2-transprnt.fw.png" width="157" height="48" alt="fg" align="left">Editing Profile</h1>
+                <h1> <img src="img/logo2-transprnt.fw.png" width="160" height="76" alt="fg" align="center"></h1>
+				
             </div>
 
             <div role="main" class="ui-content">
@@ -135,11 +136,20 @@
                                 <div class="ui-block-b"><button type="reset" data-theme="b" data-icon="delete">Cancel</button></div>
                         </fieldset>
 						
-                <div data-role="footer" data-position="fixed"> 
-                     <a href="#" id="profile-update-btn" data-icon="check" data-role="button">SAVE</a>
+               <div data-role="footer" data-position="fixed" data-tap-toggle="false" > 
+                    <div data-role="navbar">
+                        <ul >
+                            <li> <a href="#popinfo" data-role="button" data-icon="info"  data-rel="popup">Info</a> </li>
+                            <li> <a href="register.html" data-role="button" data-icon="minus" >Privacy & policy</a> </li>
+                            <li> <a href="config.html" data-role="button" data-icon="gear" >setting</a> </li>
+                        </ul>
+                    </div>
                 </div>
 				
-				
+
+<div data-role="popup" id="popinfo">
+	<p>Info about Namibia Professional Network<p>
+</div>
                 
             </div>
         </div>
