@@ -12,18 +12,18 @@
         <div data-role="page" id="page-profile">
             <div data-role="panel" data-display="push" id="panel-nav" data-theme="a">
                 <ul data-role="listview">
-                    <li data-icon='false'><a href="home.html">Home</a></li>
+                    <li data-icon='home'><a href="home.html">Home</a></li>
                     <li data-icon='user'><a href="#">Profile</a></li>
                     <li data-icon='search'><a href="profile-search.html">Search</a></li>
                     <li data-icon='bullets'><a href="job-list.html">Job List</a></li>
                     <li data-icon='action'><a href="job-create.html">Create Job</a></li>
-                    <li data-icon='false'><a href="logout.html">Logout</a></li>
+                    <li data-icon='lock'><a href="logout.html">Logout</a></li>
                 </ul>
             </div>
 
             <div data-role="header" data-theme="a">
-                <a href="#panel-nav" data-icon="bars">menu</a>
-                <h1>Editing Profile</h1>
+                <a href="#panel-nav" data-icon="bars" data-iconpos="notext">menu</a>
+                <h1><img src="img/logo2-transprnt.fw.png" width="157" height="48" alt="fg" align="left">Editing Profile</h1>
             </div>
 
             <div role="main" class="ui-content">
@@ -130,9 +130,17 @@
                 <label for="profile-skills">Skills:</label>
                 <textarea cols="40" rows="8" name="profile-skills" id="profile-skills" placeholder="Describe your skills here"></textarea>
                 
+                        <fieldset class="ui-grid-a">
+                               <div><a href="dashboard.html"> <div class="ui-block-a"><button type="submit" data-theme="b" data-icon="check">Save</button></a></div>
+                                <div class="ui-block-b"><button type="reset" data-theme="b" data-icon="delete">Cancel</button></div>
+                        </fieldset>
+						
                 <div data-role="footer" data-position="fixed"> 
                      <a href="#" id="profile-update-btn" data-icon="check" data-role="button">SAVE</a>
                 </div>
+				
+				
+                
             </div>
         </div>
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
