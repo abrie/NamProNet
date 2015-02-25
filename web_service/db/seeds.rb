@@ -22,5 +22,6 @@ specialties =[ "Science", "Firefighter", "Judge", "Military_officer", "Police_of
     specialty: specialties.sample,
     region: regions.sample,
     town: towns.sample, 
+    certified: rand(100) > 75 ? true : false,
     skills: Random.alphanumeric) 
 end
