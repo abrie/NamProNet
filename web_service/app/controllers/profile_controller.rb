@@ -22,6 +22,7 @@ class ProfileController < ApplicationController
         region: "unspecified",
         town: "unspecified",
         specialty: "unspecified",
+        certified: false,
         dob: Date.yesterday,
         skills: "unspecified")
         profile.save

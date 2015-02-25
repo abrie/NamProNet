@@ -300,25 +300,26 @@ function profileSearchInit(extras) {
 
 function getFakeProfileSearchResults() {
     var results = [];
-    function fakeResult(first_name, last_name, specialty, region, town) {
+    function fakeResult(first_name, last_name, specialty, region, town, certified) {
         return {
             first_name:first_name,
             last_name:last_name,
             specialty:specialty,
             region:region,
-            town:town
+            town:town,
+            certified:certified
         };
     }
-    results.push(fakeResult("a","b","c","d","e"));
-    results.push(fakeResult("a1","b2","c2","dd","ed"));
-    results.push(fakeResult("a3","bd","c2","dd","ed"));
+    results.push(fakeResult("a","b","c","d","e", false));
+    results.push(fakeResult("a1","b2","c2","dd","ed", true));
+    results.push(fakeResult("a3","bd","c2","dd","ed", false));
     return {results:results};
 }
 
 function profileListInit(extra) {
     console.log("profile list change");
     results = extra.results;
-    ul = $("#profile-list");
+    $("#profile-table-body").empty();
     for( var index = 0; index < results.length; index++ ) {
         var profile = results[index];
         var tr = $("<tr>");
@@ -327,6 +328,10 @@ function profileListInit(extra) {
         $("<td>").html(profile.specialty).appendTo(tr); 
         $("<td>").html(profile.region).appendTo(tr); 
         $("<td>").html(profile.town).appendTo(tr); 
+        if( profile.certified ) {
+            tr.css({'background':'green'});
+        }
+
         $("#profile-table-body").append(tr);
     } 
 }
@@ -349,7 +354,7 @@ function doProfileSearch() {
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown, jqXHR);
-            alert( "network error while updating profile" );
+            alert( "network error while requesting search" );
             $("body").pagecontainer("change", "profile-list.html", {extra:getFakeProfileSearchResults()});
         });
 }
