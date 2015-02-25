@@ -36,8 +36,8 @@ var app = {
 
 function frontInit(extras) {
     var btn = $("#home-search-submit-btn");
+    btn.off('click');
     btn.click(doProfileSearch);
-    console.log(btn);
 }
 
 var pageInit = {
@@ -199,6 +199,7 @@ function configInit(extras) {
 }
 
 function jobCreateInit(extras) {
+    $("#job-create-submit-btn").off('click');
     $("#job-create-submit-btn").click( doJobCreate );
 }
 
@@ -228,12 +229,14 @@ function registerInit(extras) {
         $.mobile.changePage("logout.html");
     }
     else {
+        $("#register-submit-btn").off('click');
         $("#register-submit-btn").click( doRegistration );
     }
 }
 
 function logoutInit(extras) {
     if( isAuthorized() ) {
+        $("#logout-btn").off('click');
         $("#logout-btn").click( doLogout );
     }
 }
@@ -250,6 +253,7 @@ function loginInit(extras) {
         $.mobile.changePage("profile.html");
     }
     else {
+        $("#login-submit-btn").off('click');
         $("#login-submit-btn").click( doLogin );
     }
 }
@@ -285,6 +289,7 @@ function profileInit(extras) {
     var credentials = getAuthorizedCredentials();
     requestProfile( credentials.email, populateProfile );
 
+    $("#profile-update-btn").off('click');
     $("#profile-update-btn").click( function() {
         updateProfile(); 
     });
@@ -293,6 +298,7 @@ function profileInit(extras) {
 function profileSearchInit(extras) {
     console.log("profile search change");
 
+    $("#profile-search-submit-btn").off('click');
     $("#profile-search-submit-btn").click( function() {
         doProfileSearch(); 
     });
