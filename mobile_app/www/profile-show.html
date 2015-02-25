@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <title>Profile</title>
+    </head>
+    <body>
+        <div data-role="page" id="page-profile-show">
+            <div data-role="panel" data-display="push" id="panel-nav" data-theme="a">
+                <ul data-role="listview">
+                    <li data-icon='home'><a href="home.html">Home</a></li>
+                    <li data-icon='user'><a href="#">Profile</a></li>
+                    <li data-icon='search'><a href="profile-search.html">Search</a></li>
+                    <li data-icon='bullets'><a href="job-list.html">Job List</a></li>
+                    <li data-icon='action'><a href="job-create.html">Create Job</a></li>
+					 <li data-icon='action'><a href="job-create.html">Connection</a></li>
+                    <li data-icon='lock'><a href="logout.html">Logout</a></li>
+                </ul>
+            </div>
+
+            <div data-role="header" data-theme="a">
+                <a href="#panel-nav" data-icon="bars" data-iconpos="notext">menu</a>
+                <h1><strong>Profile</strong></h1>
+            </div>
+
+            <div role="main" class="ui-content">
+                <label for="profile-firstname">First Name</label>
+                <div id="profile-firstname"></div>
+                <label for="profile-lastname">Last Name</label>
+                <div id="profile-lastname"></div>
+                <label for="profile-show-region">Region</label>
+                <div id="profile-show-region"></div>
+                <label for="profile-show-town">Town</label>
+                <div id="profile-show-town"></div>
+                <label for="profile-show-specialty">Specialty</label>
+                <div id="profile-show-specialty"></div>
+                <label for="profile-skills">Skills:</label>
+                <div id="profile-skills"></div>
+               <div data-role="footer" data-position="fixed" data-tap-toggle="false" > 
+                    <div data-role="navbar">
+                        <ul >
+                            <li> <a href="#popinfo" data-role="button" data-icon="info"  data-rel="popup" data-position-to="window" >Info</a> </li>
+                            <li> <a href="#poppp" data-role="button" data-icon="minus"  data-rel="popup" data-position-to="window">Privacy & policy</a> </li>
+                            <li> <a href="config.html" data-role="button" data-icon="gear" >setting</a> </li>
+                        </ul>
+                    </div>
+                </div>
+			<!---- popups for info ---->	
+
+<div data-role="popup" id="popinfo">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+	<p>Info about Namibia Professional Network<p>
+</div>
+
+<!----- popup for privacy & policy ----->
+<div data-role="popup" id="poppp">
+<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+	<p>Privacy & policy  about Namibia Professional Network<p>
+</div>
+
+                
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

@@ -18,6 +18,7 @@ var app = {
         pageInit.inits["page-job-create"] = jobCreateInit;
         pageInit.inits["page-config"] = configInit;
         pageInit.inits["page-front"] = frontInit;
+        pageInit.inits["page-profile-show"] = profileShowInit;
         $("body").pagecontainer({
               change: function( e, data ) {
                   var pageId = data.toPage[0].id;
@@ -284,6 +285,16 @@ function doLogin() {
         });
 }
 
+function profileShowInit(extras) {
+    var profile = extras.profile;
+    $("#profile-firstname").html(profile.first_name);
+    $("#profile-lastname").html(profile.last_name);
+    $("#profile-skills").html(profile.skills);
+    $("#profile-show-town").html(profile.town);
+    $("#profile-show-region").html(profile.region);
+    $("#profile-show-specialty").html(profile.specialty);
+}
+
 function profileInit(extras) {
     console.log("profile page change");
     var credentials = getAuthorizedCredentials();
@@ -328,7 +339,7 @@ function profileListInit(extra) {
     $("#profile-table-body").empty();
     function getEventHandlerFunction(p) {
         return function() {
-            console.log(p);
+            $("body").pagecontainer("change", "profile-show.html", {extra:{profile:p}});
         };
     }
     for( var index = 0; index < results.length; index++ ) {
