@@ -10,7 +10,7 @@ The hackathon version is minimally functional:
 
 ## Technical Details
 
-- The backend uses [Ruby on Rails](http://en.wikipedia.org/wiki/Ruby_on_Rails]
+- The backend uses [Ruby on Rails](http://en.wikipedia.org/wiki/Ruby_on_Rails)
 - The backend's administration framework is [ActiveAdmin](https://github.com/activeadmin/activeadmin)
 - The mobile application is Javascript/[HTML5](http://en.wikipedia.org/wiki/HTML5) compiled into an Android application by [PhoneGap](http://en.wikipedia.org/wiki/PhoneGap)
 - The mobile application's UI framework is [jQuery Mobile](http://en.wikipedia.org/wiki/JQuery_Mobile)
