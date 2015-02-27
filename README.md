@@ -17,4 +17,4 @@ The hackathon version is minimally functional:
 
 ## Further Development
 
-Developers welcome. Please see our [issues list](https://github.com/abrie/NamibiaProfessionalNetwork/issues), join us as a collaborator, and help us move this application into production. 
+Developers needed! Please see our [issues list](https://github.com/abrie/NamibiaProfessionalNetwork/issues), join us as a collaborator, and help us move this application into production. 
