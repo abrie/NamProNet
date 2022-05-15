@@ -1,4 +1,0 @@
-- make sure the server is accessible by either running it on an open port or opening port 3000
-- run the server as follows:
-rails server -b 0.0.0.0
-this allows it to bind to numeric ip addresses instead of just 'localhost'
